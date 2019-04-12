@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message CreateLoginRequest {
+message CreateAccountRequest {
     string Login = 1;
     string Password = 2;
 }
@@ -9,16 +9,11 @@ message CreateReply {
     string Status = 1;
 }
 
-message CreateNameRequest {
-    string Login = 1;
-    string Password = 2;
-    string Name = 3;
-}
-
 message CreateRenWuRequest{
-    string Name = 1;
-    string Sex = 2;
-    string Race = 3;
+    string Login = 1;
+    string Name = 2 ;
+    string Sex = 3;
+    string Race = 4;
 }
 
 message LoginRequest {
@@ -40,7 +35,7 @@ message LoginReply {
 }
 
 service GameLoginService {
-    rpc CreateLogin (CreateLoginRequest) returns (CreateReply){}
-    rpc CreateName (CreateNameRequest) returns (CreateReply){}
-    rpc GameLogin (LoginRequest) returns (LoginReply){}
+    rpc CreateAccount (CreateAccountRequest) returns (CreateReply);
+    rpc CreateName (CreateRenWuRequest) returns (CreateReply);
+    rpc GameLogin (LoginRequest) returns (LoginReply);
 }

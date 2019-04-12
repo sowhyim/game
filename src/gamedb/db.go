@@ -56,3 +56,9 @@ func GetRenWu(Name string) (*enum.RenWu, error) {
 	db.Close()
 	return &out, nil
 }
+
+func InsertLogin()error{
+
+
+	return nil
+}
