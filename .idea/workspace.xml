@@ -261,6 +261,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
@@ -291,49 +292,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Go Build.go build main.go (2)">
-    <configuration name="go build Login.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="game" />
-      <working_directory value="$PROJECT_DIR$/src/Login" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/Login/Login.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="game" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/client/main.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build main.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="game" />
-      <working_directory value="$PROJECT_DIR$/src/Server" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/Server/main.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="game" />
-      <working_directory value="$PROJECT_DIR$/src/Login" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/src/Login/main.go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test1 in Login/listen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="game" />
-      <working_directory value="$PROJECT_DIR$/src/Login/listen" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="Login/listen" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^Test1$" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build main.go (2)" />
