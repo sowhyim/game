@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+message CreateLoginRequest {
+    string Login = 1;
+    string Password = 2;
+}
+
+message CreateReply {
+    string Status = 1;
+}
+
+message CreateNameRequest {
+    string Login = 1;
+    string Password = 2;
+    string Name = 3;
+}
+
+message CreateRenWuRequest{
+    string Name = 1;
+    string Sex = 2;
+    string Race = 3;
+}
+
+message LoginRequest {
+    string login = 1;
+    string password = 2;
+}
+
+message LoginReply {
+    string Name = 1;
+    int32 Sex = 2;
+    int32 Life = 3;
+    int32 Magic = 4;
+    int32 Physical = 5;
+    int32 Sorcery = 6;
+    int32 DefensePhysical = 7;
+    int32 DefenseSorcery = 8;
+    int32 X = 11;
+    int32 Y = 12;
+}
+
+service GameLoginService {
+    rpc CreateLogin (CreateLoginRequest) returns (CreateReply){}
+    rpc CreateName (CreateNameRequest) returns (CreateReply){}
+    rpc GameLogin (LoginRequest) returns (LoginReply){}
+}
