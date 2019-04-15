@@ -1,6 +1,6 @@
 package enum
 
-import "proto/pbLogin"
+import pblogin "github.com/sowhyim/game/src/proto/login"
 
 const (
 	Human  = 1
@@ -105,8 +105,8 @@ func (c *RenWu) TableName() string {
 	return "t_RenWu"
 }
 
-func (c *RenWu) ToProto() *pbLogin.LoginReply {
-	return &pbLogin.LoginReply{
+func (c *RenWu) ToProto() *pblogin.LoginReply {
+	return &pblogin.LoginReply{
 		Name:            c.Name,
 		Sex:             c.Sex,
 		Life:            c.Life,
@@ -120,7 +120,7 @@ func (c *RenWu) ToProto() *pbLogin.LoginReply {
 	}
 }
 
-func FromProto(c *pbLogin.LoginReply) *RenWu {
+func FromProto(c *pblogin.LoginReply) *RenWu {
 	return &RenWu{
 		Name:            c.Name,
 		Sex:             c.Sex,

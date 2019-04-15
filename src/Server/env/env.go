@@ -2,21 +2,21 @@ package env
 
 import (
 	"fmt"
-	"Server/db"
-	"Server/enum"
+	"github.com/sowhyim/game/src/enum"
+	"github.com/sowhyim/game/src/gamedb"
 )
 
 type ChangDi struct {
-	Map *Map
+	Map  *Map
 	List []*enum.RenWu
 }
 
 var InitChangDi ChangDi
 
-func ChangDiInit(){
-	InitChangDi.Map=&Map{100,100}
+func ChangDiInit() {
+	InitChangDi.Map = &Map{100, 100}
 	InitChangDi.List = db.GetAllRenWu()
-	for _,val := range InitChangDi.List{
+	for _, val := range InitChangDi.List {
 		fmt.Println(val)
 	}
 }

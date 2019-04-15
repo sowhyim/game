@@ -1,23 +1,23 @@
 package main
 
 import (
-	"Server/db"
-	"Server/env"
-	"Server/handler/login"
+	"github.com/sowhyim/game/src/Server/env"
+	"github.com/sowhyim/game/src/Server/handler/login"
+	"github.com/sowhyim/game/src/gamedb"
+	pblogin "github.com/sowhyim/game/src/proto/login"
 	"google.golang.org/grpc"
 	"net"
-	pblogin "proto/login"
 )
 
-func main(){
+func main() {
 	db.InitDB()
 	env.ChangDiInit()
-	lis,err:=net.Listen("tcp",":10001")
+	lis, err := net.Listen("tcp", ":10001")
 	defer lis.Close()
-	if err!=nil{
+	if err != nil {
 		panic(err)
 	}
-	s:=grpc.NewServer()
-	pblogin.RegisterGameLoginServiceServer(s,&login.GameLoginServiceSrv{})
+	s := grpc.NewServer()
+	pblogin.RegisterGameLoginServiceServer(s, &login.GameLoginServiceSrv{})
 	s.Serve(lis)
 }

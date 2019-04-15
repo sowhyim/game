@@ -1,11 +1,11 @@
 package login
 
 import (
-	"Server/db"
 	"context"
 	"errors"
 	"fmt"
-	"proto/login"
+	"github.com/sowhyim/game/src/gamedb"
+	"github.com/sowhyim/game/src/proto/login"
 )
 
 type GameLoginServiceSrv struct{}
@@ -22,7 +22,7 @@ func (s *GameLoginServiceSrv) GameLogin(ctx context.Context, req *login.LoginReq
 		fmt.Println("login DB err :", err)
 	}
 	if out.Login == "" {
-		return nil,errors.New("账号或密码错误，请确认！！")
+		return nil, errors.New("账号或密码错误，请确认！！")
 	}
 	fmt.Println(out)
 	reply, err := db.GetRenWu(out.Name)

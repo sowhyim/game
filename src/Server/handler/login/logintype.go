@@ -1,6 +1,6 @@
 package login
 
-import "proto/login"
+import "github.com/sowhyim/game/src/proto/login"
 
 type Login struct {
 	Login    string `xorm:"Login"`
