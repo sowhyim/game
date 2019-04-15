@@ -1,10 +1,10 @@
 package db
 
 import (
-	"Server/enum"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
+	"github.com/sowhyim/game/src/enum"
 )
 
 var (
@@ -57,8 +57,7 @@ func GetRenWu(Name string) (*enum.RenWu, error) {
 	return &out, nil
 }
 
-func InsertLogin()error{
-
+func InsertLogin() error {
 
 	return nil
 }

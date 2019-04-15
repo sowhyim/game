@@ -1,15 +1,14 @@
 package listen
 
 import (
-	lenum "Login/enum"
-	senum "Server/enum"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/sowhyim/game/src/enum"
+	"github.com/sowhyim/game/src/proto/pbLogin"
 	"google.golang.org/grpc"
 	"net"
-	pblogin "proto/login"
 )
 
 type ClientConn map[string]net.Conn
@@ -30,16 +29,16 @@ func Dealer(c net.Conn, index string) {
 	delete(Conn, index)
 }
 
-func GameLogin(index string) *senum.RenWu {
+func GameLogin(index string) *enum.RenWu {
 	var login, password string
 LOOP:
 	var by = make([]byte, 1024)
-	Conn[index].Write([]byte(lenum.LoginText))
+	Conn[index].Write([]byte(enum.LoginText))
 	Conn[index].Read(by)
 	login = string(by)
 	fmt.Println(string(by))
 	//var by2 = make([]byte, 1024)
-	Conn[index].Write([]byte(lenum.PasswordTest))
+	Conn[index].Write([]byte(enum.PasswordTest))
 	Conn[index].Read(by)
 	password = string(by)
 	fmt.Println(string(by))
@@ -48,11 +47,11 @@ LOOP:
 		Conn[index].Write([]byte(err.Error()))
 		goto LOOP
 	}
-	Conn[index].Write([]byte(lenum.LoginSuccess))
+	Conn[index].Write([]byte(enum.LoginSuccess))
 	usermsg, err := json.Marshal(user)
 	Conn[index].Write([]byte(usermsg))
 	if Conn[user.Name] != nil {
-		Conn[index].Write([]byte(lenum.UserLoginError))
+		Conn[index].Write([]byte(enum.UserLoginError))
 		Conn[index].Close()
 		return nil
 	}
@@ -60,7 +59,7 @@ LOOP:
 	return user
 }
 
-func HandleScan(index string, user *senum.RenWu) {
+func HandleScan(index string, user *enum.RenWu) {
 	for {
 		Conn[index].Write([]byte("你可以输入以下操作：1、移动，2、使用道具，3、退出"))
 		by := make([]byte, 1024)
@@ -92,14 +91,14 @@ func HandleScan(index string, user *senum.RenWu) {
 	}
 }
 
-func CallServer(login, password string) (*senum.RenWu, error) {
+func CallServer(login, password string) (*enum.RenWu, error) {
 	conn, err := grpc.Dial("localhost:10001", grpc.WithInsecure())
 	defer conn.Close()
 	if err != nil {
 		panic(err)
 	}
-	client := pblogin.New(conn)
-	out, err := client.GameLogin(context.Background(), &pblogin.Request{Login: login, Password: password})
+	client := pbLogin.NewGameLoginServiceClient(conn)
+	out, err := client.GameLogin(context.Background(), &pbLogin.LoginRequest{Login: login, Password: password})
 	if err != nil {
 		return nil, err
 	}
@@ -107,5 +106,5 @@ func CallServer(login, password string) (*senum.RenWu, error) {
 		return nil, errors.New("请确认你的账号或者密码")
 	}
 
-	return senum.FromProto(out), nil
+	return enum.FromProto(out), nil
 }
