@@ -1,5 +1,6 @@
 package enum
 
+
 var (
 	LoginText = "请输入用户名："
 	PasswordTest = "请输入密码："

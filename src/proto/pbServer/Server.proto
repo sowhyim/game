@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message ConnRequest {
+    string Login = 1;
+    string Name = 2;
+    string RmoteAddr = 3;
+}
+
+message ConnReply {
+    int32 Status = 1;
+}
+
+service ServerSrv {
+    rpc LoginServer (ConnRequest) returns (ConnReply) ;
+}
