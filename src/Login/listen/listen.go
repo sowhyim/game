@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/sowhyim/game/src/enum"
-	"github.com/sowhyim/game/src/proto/pbLogin"
+	"github.com/sowhyim/game/src/proto/pblogin"
 	"google.golang.org/grpc"
 	"net"
 )
@@ -97,7 +97,7 @@ func CallServer(login, password string) (*enum.RenWu, error) {
 	if err != nil {
 		panic(err)
 	}
-	client := pbLogin.NewGameLoginServiceClient(conn)
+	client := pblogin.NewGameLoginServiceClient(conn)
 	out, err := client.GameLogin(context.Background(), &pbLogin.LoginRequest{Login: login, Password: password})
 	if err != nil {
 		return nil, err
